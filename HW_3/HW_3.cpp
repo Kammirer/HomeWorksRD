@@ -42,11 +42,12 @@ int main()
     std::cout << "=== 3 STEP: double_2 ===" << std::endl;
     double myDoubleVar = 567.8374513;
 
-    std::cout << "Two signs: " << std::setprecision(5) << myDoubleVar << std::endl;
-    std::cout << "Four signs: " << std::setprecision(7) << myDoubleVar << std::endl;
-    std::cout << "Six signs: " << std::setprecision(9) << myDoubleVar << std::endl;
-    std::cout << "Standard notation: 5.678374513*10^2" << std::endl;
-    std::cout << "E-notation: 5.678374513e2" << std::endl;
+    std::cout << "Standard Two signs: " << std::setprecision(5) << myDoubleVar << std::endl;
+    std::cout << "Standard Four signs: " << std::setprecision(7) << myDoubleVar << std::endl;
+    std::cout << "Standard Six signs: " << std::setprecision(9) << myDoubleVar << std::endl;
+    std::cout << "E-notation Two signs: " << std::setprecision(5) << std::scientific << myDoubleVar << std::endl;
+    std::cout << "E-notation Four signs: " << std::setprecision(7) << std::scientific << myDoubleVar << std::endl;
+    std::cout << "E-notation Six signs: " << std::setprecision(9) << std::scientific << myDoubleVar << std::endl;
     std::cout << std::endl;
 
     // 4 STEP: days of the week
