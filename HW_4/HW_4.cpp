@@ -31,7 +31,7 @@ int main()
 
     std::cout << "Sum.: " << num1 + num2 + num3 << std::endl;
     std::cout << "Multip.: " << num1 * num2 * num3 << std::endl;
-    std::cout << "Arithmetic mean: " << (num1 + num2 + num3) / 3 << std::endl;
+    std::cout << "Arithmetic mean: " << (num1 + num2 + num3) / double(3.0) << std::endl;
     std::cout << "Comparison num1 >= num2: " << (num1 >= num2) << std::endl;
     std::cout << "Comparison num2 < nu3: " << (num2 < num3) << std::endl;
     std::cout << std::endl;
@@ -80,8 +80,10 @@ int main()
     double areaCircle = 0;
     double lengthCircle = 0;
 
-    areaCircle = 3.14 * (radiusCircle * radiusCircle);
-    lengthCircle = 2 * 3.14 * radiusCircle;
+    const double pi = 3.14;
+
+    areaCircle = pi * (radiusCircle * radiusCircle);
+    lengthCircle = 2 * pi * radiusCircle;
 
     std::cout << "Area circle: " << areaCircle << std::endl;
     std::cout << "Length circle: " << lengthCircle << std::endl;
