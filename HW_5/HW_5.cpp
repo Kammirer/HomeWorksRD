@@ -15,6 +15,13 @@ enum class Month {
     December
 };
 
+enum class Seasons {
+    Winter,
+    Spring,
+    Summer,
+    Autumn
+};
+
 int main()
 {
     // 1 STEP
@@ -22,19 +29,20 @@ int main()
     int num1 = 0;
     int num2 = 0;
     int num3 = 0;
+    int maxNum = 0;
 
     std::cout << "Enter 3 integer number: ";
     std::cin >> num1 >> num2 >> num3;
 
-    if (num1 > num2 && num1 > num3) {
-        std::cout << "Max number: " << num1 << std::endl;
+    maxNum = num1;
+    if (num2 > maxNum) {
+        maxNum = num2;
     }
-    else if (num2 > num1 && num2 > num3) {
-        std::cout << "Max number: " << num2 << std::endl;
+    else if (num3 > maxNum) {
+        maxNum = num3;
     }
-    else {
-        std::cout << "Max number: " << num3 << std::endl;
-    }
+    std::cout << "Max number: " << maxNum << std::endl;
+    
     std::cout << std::endl;
 
     // 2 STEP
@@ -87,60 +95,79 @@ int main()
     sumAngle = angle1 + angle2 + angle3;
 
     if (sumAngle == 180) {
-        std::cout << "This is a Triangle!" << std::endl;
+        if (angle1 <= 0 || angle2 <= 0 || angle3 <= 0) {
+            std::cout << "This is NOT a Triangle!";
+        }
+        else {
+            std::cout << "This is a Triangle!";
+        }
     }
     else {
-        std::cout << "This is NOT a Triangle!" << std::endl;
+        std::cout << "This is NOT a Triangle!";
     }
     std::cout << std::endl;
 
     // 5 STEP
     std::cout << "5 STEP: Month by switch-case" << std::endl;
-    int month = 0;
+    int monthNumber = 0;
 
     std::cout << "Enter month number (1-12): ";
-    std::cin >> month;
+    std::cin >> monthNumber;
 
-    switch (month)
-    {
-    case int(Month::January):
+    Month month;
+
+    switch (monthNumber) {
+    case 1:
+        month = Month::January;
         std::cout << "January\n";
         break;
-    case int(Month::February) :
+    case 2:
+        month = Month::February;
         std::cout << "February\n";
         break;
-    case int(Month::March) :
+    case 3:
+        month = Month::March;
         std::cout << "March\n";
         break;
-    case int(Month::April) :
+    case 4:
+        month = Month::April;
         std::cout << "April\n";
         break;
-    case int(Month::May) :
+    case 5:
+        month = Month::May;
         std::cout << "May\n";
         break;
-    case int(Month::June) :
+    case 6:
+        month = Month::June;
         std::cout << "June\n";
         break;
-    case int(Month::July) :
+    case 7:
+        month = Month::July;
         std::cout << "July\n";
         break;
-    case int(Month::August) :
+    case 8:
+        month = Month::August;
         std::cout << "August\n";
         break;
-    case int(Month::September) :
+    case 9:
+        month = Month::September;
         std::cout << "September\n";
         break;
-    case int(Month::October) :
+    case 10:
+        month = Month::October;
         std::cout << "October\n";
         break;
-    case int(Month::November) :
+    case 11:
+        month = Month::November;
         std::cout << "November\n";
         break;
-    case int(Month::December) :
+    case 12:
+        month = Month::December;
         std::cout << "December\n";
         break;
     default:
-        std::cout << "Error...\n";
+        std::cout << "Error..!\n";
+        return 0;
     }
     std::cout << std::endl;
 
@@ -151,26 +178,32 @@ int main()
     std::cout << "Enter month number (1-12) for season: ";
     std::cin >> monthSeason;
 
+    Seasons season;
+
     switch (monthSeason)
     {
-    case int(Month::December) :
-    case int(Month::January):
-    case int(Month::February) :
+    case 12:
+    case 1:
+    case 2:
+        season = Seasons::Winter;
         std::cout << "Winter\n";
         break;
-    case int(Month::March) :
-    case int(Month::April) :
-    case int(Month::May) :
+    case 3:
+    case 4:
+    case 5:
+        season = Seasons::Spring;
         std::cout << "Spring\n";
         break;
-    case int(Month::June) :
-    case int(Month::July) :
-    case int(Month::August) :
+    case 6:
+    case 7:
+    case 8:
+        season = Seasons::Summer;
         std::cout << "Summer\n";
         break;
-    case int(Month::September) :
-    case int(Month::October) :
-    case int(Month::November) :
+    case 9:
+    case 10:
+    case 11:
+        season = Seasons::Autumn;
         std::cout << "Autumn\n";
         break;
     default:
