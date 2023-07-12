@@ -12,7 +12,7 @@ int main()
 
 	int randNumber = 0;
 	int steps = 0;
-	int bestSteps = 0;
+	int bestSteps = INT_MAX;
 	
 	srand(time(nullptr));
 	randNumber = rand() % (100 + 1);
@@ -20,6 +20,7 @@ int main()
 	std::cout << "Enter your number: ";
 
 	while (true) {
+
 		int inputNumber = 0;
 		std::cin >> inputNumber;
 
@@ -36,7 +37,7 @@ int main()
 		}
 		else {
 			if (inputNumber == randNumber) {
-				if ((bestSteps == 0) || (steps < bestSteps)) {
+				if ((steps < bestSteps)) {
 					bestSteps = steps;
 				}
 
@@ -50,7 +51,6 @@ int main()
 				}
 
 				steps = 0;
-				srand(time(nullptr));
 				randNumber = rand() % (100 + 1);
 
 			}
