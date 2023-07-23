@@ -25,7 +25,7 @@ void toUppercase(char str[]) {
 
 // Step 3
 bool isPalindrom(const char str[]) {
-	int length = strlen(str);
+	const int length = strlen(str);
 	int startLine = 0;
 	int endLine = length - 1;
 
@@ -59,11 +59,17 @@ void parseStringLetters(const char str[], int& vowelsCount, int& constonantsCoun
 
 // Step 5
 bool isEqual(const char str1[], const char str2[]) {
-	for (int i = 0; i < 100; i++) {
-		if (str1[i] != str2[i]) {
-			return false;
+	const int length1 = strlen(str1);
+	const int length2 = strlen(str2);
+	if (length1 != length2) {
+		return false;
+	}
+	else {
+		for (int i = 0; i < length1; i++) {
+			if (str1[i] != str2[i]) {
+				return false;
+			}
 		}
 	}
-
 	return true;
 }
