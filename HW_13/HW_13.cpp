@@ -159,7 +159,7 @@ int main()
 			localtime_s(&tstruct, &now);
 			strftime(buf, sizeof(buf), "%d-%m-%Y", &tstruct);
 
-			if (checkEOF("wordDayResult.txt") || !(readVerifyFile("wordDayResult.txt", buf))) { // если пустой или дата != сегодня, тогда играем
+			if (checkEOF("wordDayResult.txt") || !(readVerifyFile("wordDayResult.txt", buf))) { // if file is empty or date in file != today, play game
 
 				std::time_t t = std::time(nullptr);
 				std::tm* now = std::localtime(&t);
@@ -209,7 +209,7 @@ int main()
 
 				} while (steps < maxSteps);
 			}
-			else { // иначе - слово дня уже было сегодня отгадано
+			else { // else - word day guessed
 				std::cout << "Sorry. The word of the day has already been guessed goodbye! Came back tomorrow.\n\n";
 				steps = 0;
 			}
