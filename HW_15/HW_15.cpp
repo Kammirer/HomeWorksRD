@@ -57,7 +57,7 @@ public:
 	}
 
 	void printInfoWeapon() {
-		std::cout << " | Weapon: " << name << " - damage: " << damage << ", range: " << range << std::endl;
+		std::cout << " | Weapon: " << name << " - damage: " << damage << ", range: " << range;
 	}
 };
 
@@ -74,14 +74,16 @@ public:
 		classPlayer = classPlayer_par;
 	}
 
+	std::string teamPl;
 	Weapon* WeaponPlayer;
 	void addWeapon(Weapon* weapon) {
 		WeaponPlayer = weapon;
 	}
 
 	void printInfoPlayer() {
-		std::cout << " | Player: " << name << " - health: " << health << ", class: " << getClassification(classPlayer);
+		std::cout << "Player: " << name << " - health: " << health << ", class: " << getClassification(classPlayer);
 		WeaponPlayer->printInfoWeapon();
+		std::cout << " | Team: " << teamPl << std::endl;
 	}
 };
 
@@ -107,6 +109,7 @@ public:
 		for (int i = 0; i < numPlayers; i++) {
 			if (players[i] == nullptr) {
 				players[i] = player;
+				player->teamPl = name;
 				return;
 			}
 		}
@@ -116,16 +119,8 @@ public:
 		for (int i = 0; i < numPlayers; i++) {
 			if (players[i] == player) {
 				players[i] = nullptr;
+				player->teamPl = "";
 				return;
-			}
-		}
-	}
-
-	void printTeam() {
-		for (int i = 0; i < numPlayers; i++) {
-			if (players[i] != nullptr) {
-				std::cout << "Team: " << name;
-				players[i]->printInfoPlayer();
 			}
 		}
 	}
@@ -168,10 +163,9 @@ int main()
 	team2.addPlayer(&player2);
 	team2.addPlayer(&player3);
 
-	team1.printTeam();
-	team2.printTeam();
-
-	std::cout << std::endl;
+	player1.printInfoPlayer();
+	player2.printInfoPlayer();
+	player3.printInfoPlayer();
 
 	return 0;
 }
