@@ -1,6 +1,7 @@
 #include <iostream>
 
 const int sizeMarks = 4;
+const float percentForBest = 75.0;
 
 struct Student
 {
@@ -51,7 +52,7 @@ int count75Percent(Student students[], int numStudents) {
 
 	for (int i = 0; i < numStudents; i++) {
 		double average = calcAverage(students[i]);
-		if (average > 75.0) {
+		if (average > percentForBest) {
 			numSt++;
 		}
 	}
