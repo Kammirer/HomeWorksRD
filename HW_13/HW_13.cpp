@@ -103,7 +103,7 @@ bool readVerifyFile(const char* fileName, const char* buf) {
 	std::fstream file;
 	file.open(fileName, std::ios::in);
 
-	const int max_length = 100;
+	const int max_length = 5;
 	char buffer[max_length];
 
 	if (!file)
@@ -121,8 +121,8 @@ bool readVerifyFile(const char* fileName, const char* buf) {
 
 int main()
 {
-	const int lengthBase = 10;
-	const char* wordBase[lengthBase] = { "APPLE", "NIGHT", "HELLO", "BRAIN", "CAMEL", "WOMAN", "MONEY", "FLAME", "LEVEL", "FRESH" };
+	const int wordsCount = 10;
+	const char* wordBase[wordsCount] = { "APPLE", "NIGHT", "HELLO", "BRAIN", "CAMEL", "WOMAN", "MONEY", "FLAME", "LEVEL", "FRESH" };
 
 	int randNumber = 0;
 	const char* guessWord = {};
@@ -216,7 +216,7 @@ int main()
 		}
 
 		if (typeGame == 2) {
-			randNumber = rand() % (lengthBase);
+			randNumber = rand() % (wordsCount);
 			guessWord = wordBase[randNumber];
 
 			do {
