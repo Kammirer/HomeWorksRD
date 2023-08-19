@@ -24,13 +24,11 @@ void printWordResult(const char* guessWord, const char* inputWord) {
 	const int lengthQuess = std::strlen(guessWord);
 	for (int i = 0; i < lengthQuess; i++) {
 		char ch = std::toupper(inputWord[i]);
-		if (std::strchr(guessWord, ch)) {
-			if (guessWord[i] == ch) {
-				std::cout << ch;
-			}
-			else {
-				std::cout << char(std::tolower(ch));
-			}
+		if (std::toupper(guessWord[i] == ch)) {
+			std::cout << ch;
+		}
+		else if (std::strchr(guessWord, ch) != nullptr) {
+			std::cout << char(std::tolower(ch));
 		}
 		else {
 			std::cout << "*";
