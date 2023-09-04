@@ -6,47 +6,45 @@
 #include <stack>
 
 unsigned int uniqueWordsCount(const std::string& line) {
-	if (!line.empty()) {
-		std::stringstream iss(line);
-		std::set<std::string> words;
-		
-		std::string word;
-		while (iss >> word) {
-			words.insert(word);
-		}
-		
-		return words.size();
-	}
-	else {
+	if (line.empty()) {
 		return 0;
 	}
+
+	std::stringstream iss(line);
+	std::set<std::string> words;
+
+	std::string word;
+	while (iss >> word) {
+		words.insert(word);
+	}
+
+	return words.size();
 }
 
 std::string mostOccuredWord(const std::string& line) {
-	if (!line.empty()) {
-		std::unordered_map<std::string, int> words;
-		std::stringstream iss(line);
-		
-		std::string word;
-		while (iss >> word) {
-			words[word]++;
-		}
-
-		std::string outWord;
-		int maxCount = 0;
-
-		for (const auto& pair : words) {
-			if (pair.second > maxCount) {
-				maxCount = pair.second;
-				outWord = pair.first;
-			}
-		}
-
-		return outWord;
-	}
-	else {
+	if (line.empty()) {
 		return "Line is empty!";
 	}
+
+	std::unordered_map<std::string, int> words;
+	std::stringstream iss(line);
+
+	std::string word;
+	while (iss >> word) {
+		words[word]++;
+	}
+
+	std::string outWord;
+	int maxCount = 0;
+
+	for (const auto& pair : words) {
+		if (pair.second > maxCount) {
+			maxCount = pair.second;
+			outWord = pair.first;
+		}
+	}
+
+	return outWord;
 }
 
 bool areBalanced(const std::string& line) {
