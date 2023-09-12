@@ -1,0 +1,8 @@
+Weapon;The Sword of DOOM;5
+UndeadWeapon;Stinky knife;2
+UndeadWeapon;Holy grenade;5
+HolySword;Holy silver sword;3
+Plague;Plague bomb;4
+HolySword;Witch sword;7
+Plague;Plague rats;2
+UndeadWeapon;Holy water;6
