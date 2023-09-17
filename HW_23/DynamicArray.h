@@ -111,7 +111,10 @@ std::size_t DynamicArray<T>::getSize() const {
 // clear memory & reset data
 template<class T>
 void DynamicArray<T>::clear() {
+	delete[] arrayDyn;
 	sizeDyn = 0;
+	capacity = 0;
+	arrayDyn = nullptr;
 }
 
 // push_back
@@ -120,13 +123,14 @@ void DynamicArray<T>::push_back(T element) {
 	if (sizeDyn >= capacity) {
 		capacity = (capacity == 0) ? 1 : capacity * 2;
 		T* newArray = new T[capacity];
-		std::memcpy(newArray, arrayDyn, sizeDyn * sizeof(T));
-		delete[] arrayDyn;
+	std::memcpy(newArray, arrayDyn, sizeDyn * sizeof(T));
+	delete[] arrayDyn;
 		arrayDyn = newArray;
 	}
 
 	arrayDyn[sizeDyn] = element;
 	sizeDyn++;
+	arrayDyn = newArray;
 }
 
 // Reserve memory

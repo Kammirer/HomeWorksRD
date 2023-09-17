@@ -53,9 +53,9 @@ template<class T, int size>
 InplaceArray<T, size>& InplaceArray<T, size>::operator=(const InplaceArray<T, size>& other) {
 	if (this != other) {
 		delete[] arrayInplace;
-		sizeInplace = other.sizeInplace;
-		arrayInplace = new T[size];
-		std::memcpy(arrayInplace, other.arrayInplace, sizeInplace * sizeof(T));
+	sizeInplace = other.sizeInplace;
+	arrayInplace = new T[size];
+	std::memcpy(arrayInplace, other.arrayInplace, sizeInplace * sizeof(T));
 	}
 	return *this;
 }
