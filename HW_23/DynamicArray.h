@@ -92,14 +92,10 @@ T& DynamicArray<T>::operator[](std::size_t index) {
 // new Size by array
 template<class T>
 void DynamicArray<T>::setSize(std::size_t newSize) {
-	if (newSize > sizeDyn) {
-		T* newArray = new T[newSize];
-		std::memcpy(newArray, arrayDyn, newSize * sizeof(T));
-		delete[] arrayDyn;
-		sizeDyn = newSize;
-		capacity = newSize;
-		arrayDyn = newArray;
+	if (newSize > capacity) {
+		reserve(newSize);
 	}
+	sizeDyn = newSize;
 }
 
 // get size
@@ -121,16 +117,11 @@ void DynamicArray<T>::clear() {
 template<class T>
 void DynamicArray<T>::push_back(T element) {
 	if (sizeDyn >= capacity) {
-		capacity = (capacity == 0) ? 1 : capacity * 2;
-		T* newArray = new T[capacity];
-	std::memcpy(newArray, arrayDyn, sizeDyn * sizeof(T));
-	delete[] arrayDyn;
-		arrayDyn = newArray;
+		reserve((capacity == 0) ? 1 : capacity * 2);
 	}
 
 	arrayDyn[sizeDyn] = element;
 	sizeDyn++;
-	arrayDyn = newArray;
 }
 
 // Reserve memory

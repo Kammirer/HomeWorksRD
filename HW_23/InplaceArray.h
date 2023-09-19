@@ -38,8 +38,13 @@ InplaceArray<T, size>::InplaceArray() {
 template<class T, int size>
 InplaceArray<T, size>::InplaceArray(const InplaceArray<T, size>& other) {
 	sizeInplace = other.sizeInplace;
-	arrayInplace = new T[sizeInplace];
-	std::memcpy(arrayInplace, other.arrayInplace, sizeInplace * sizeof(T));
+	if (sizeInplace > size) {
+		arrayInplace = new T[sizeInplace];
+		std::memcpy(arrayInplace, other.arrayInplace, sizeInplace * sizeof(T));
+	}
+	else {
+		std::memcpy(arrayInplace, other.arrayInplace, sizeInplace * sizeof(T));
+	}
 }
 
 //free allocated memory (d-tor)
@@ -51,11 +56,17 @@ InplaceArray<T, size>::~InplaceArray() {
 // operator=
 template<class T, int size>
 InplaceArray<T, size>& InplaceArray<T, size>::operator=(const InplaceArray<T, size>& other) {
-	if (this != other) {
-		delete[] arrayInplace;
-	sizeInplace = other.sizeInplace;
-	arrayInplace = new T[size];
-	std::memcpy(arrayInplace, other.arrayInplace, sizeInplace * sizeof(T));
+	if (this != &other) {
+		if (sizeInplace > other.sizeInplace) {
+			std::memcpy(arrayInplace, other.arrayInplace, other.sizeInplace * sizeof(T));
+			sizeInplace = other.sizeInplace;
+		}
+		else {
+			delete[] arrayInplace;
+			sizeInplace = other.sizeInplace;
+			arrayInplace = new T[sizeInplace];
+			std::memcpy(arrayInplace, other.arrayInplace, sizeInplace * sizeof(T));
+		}
 	}
 	return *this;
 }
@@ -85,7 +96,16 @@ void InplaceArray<T, size>::clear() {
 template<class T, int size>
 void InplaceArray<T, size>::push_back(T element) {
 	if (sizeInplace >= size) {
-		throw std::runtime_error("Array is full");
+		int newCapacity = (size == 0) ? 1 : size * 2;
+		T* newArray = new T[newCapacity];
+		std::memcpy(newArray, arrayInplace, sizeInplace * sizeof(T));
+
+		if (size > 0) {
+			delete[] arrayInplace;
+		}
+
+		size = newCapacity;
+		arrayInplace = newArray;
 	}
 
 	arrayInplace[sizeInplace] = element;
