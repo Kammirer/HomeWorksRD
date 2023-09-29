@@ -24,7 +24,6 @@ protected:
 	ConnectionType m_connectionType;
 };
 
-// using adjacency list
 class GraphAdjList : public Graph
 {
 public:
@@ -33,23 +32,21 @@ public:
 
 	void BFS(int vertex = 0) override;
 
-	int numberOfNodesInLevel(int level); //#TODO IMPLEMLENT
+	int numberOfNodesInLevel(int level);
 	bool isStronglyConnected() const;
 
 private:
 	std::vector<std::list<int> > m_list;
 };
 
-//#TODO HW
 class GraphAdjMatrix : public Graph
 {
 public:
 	GraphAdjMatrix(int vertixes, ConnectionType type = ConnectionType::undirected);
 
-	void addEdge(int v, int w) override; //#TODO IMPLEMENT
-	void DFS(int vertex = 0) override;	//#TODO IMPLEMENT
+	void addEdge(int v, int w) override;
+	void DFS(int vertex = 0) override;
 
 private:
-	//#TODO
 	std::vector<std::vector<bool>> m_matrix;
 };

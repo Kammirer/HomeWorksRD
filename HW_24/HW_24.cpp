@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Graph.h"
 
-//#define TIME_LOG_ENABLED
 int getTime() { return 1; }
 
 int main()
